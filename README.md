@@ -19,6 +19,26 @@ Please create an issue for feature requests or help. I'll add a usage guide some
 ![Map view with visuals](images/visuals.png)
 ![Information panel](images/infopanel.png)
 
+## Requirements
+
+### Grunt
+
+used to push code to servers
+
+```
+npm i grunt-screeps
+```
+
+rsync to only upload changed files
+
+```
+npm i grunt-rsync --save-dev
+```
+
+## Usage
+
+After installing requirements, you should rename example.Gruntfile.js to Gruntfile.js, then add in your own email and password. Then use the command grunt mmo.
+
 ## Progress
 
 ### Progress Board

@@ -1,70 +1,30 @@
-let config = require("config")
+let creepLogic = require('./creeps');
+let roomLogic = require('./room');
+let prototypes = require('./prototypes');
 
-require("commands")
+module.exports.loop = loop
+const loop = function() {
+    // make a list of all of our rooms
+    Game.myRooms = _.filter(Game.rooms, r => r.controller && r.controller.level > 0 && r.controller.my);
 
-let globalManager = require("globalManager")
-let roomManager = require("roomManager")
-let informationManager = require("informationManager")
-let data = require("data")
-let logging = require("logging")
+    // run spwan logic for each room in our empire
+    _.forEach(Game.myRooms, r => roomLogic.spawning(r));
 
-module.exports.loop = function() {
+    // run each creep role see /creeps/index.js
+    for (var name in Game.creeps) {
+        var creep = Game.creeps[name];
 
-    //
+        let role = creep.memory.role;
+        if (creepLogic[role]) {
+            creepLogic[role].run(creep);
+        }
+    }
 
-    let cpuUsed = Game.cpu.getUsed().toFixed(2)
-
-    console.log("start: " + cpuUsed)
-
-    //
-
-    cpuUsed = Game.cpu.getUsed()
-
-    config()
-
-    cpuUsed = (Game.cpu.getUsed() - cpuUsed).toFixed(2)
-
-    console.log("config: " + cpuUsed)
-
-    //
-
-    cpuUsed = Game.cpu.getUsed()
-
-    globalManager()
-
-    cpuUsed = (Game.cpu.getUsed() - cpuUsed).toFixed(2)
-
-    console.log("globalManager: " + cpuUsed)
-
-    //
-
-    cpuUsed = Game.cpu.getUsed()
-
-    let { consoleMessage } = roomManager()
-
-    if (Memory.global.consoleMessages) console.log(consoleMessage)
-
-    cpuUsed = (Game.cpu.getUsed() - cpuUsed).toFixed(2)
-
-    console.log("roomManager: " + cpuUsed)
-
-    //
-
-    informationManager()
-
-    cpuUsed = Game.cpu.getUsed()
-
-    data()
-
-    cpuUsed = (Game.cpu.getUsed() - cpuUsed).toFixed(2)
-
-    console.log("data: " + cpuUsed)
-
-    //
-
-    cpuUsed = Game.cpu.getUsed()
-
-    logging()
-
-    Memory.data.cpuUsage = Game.cpu.getUsed().toFixed(2)
+    // free up memory if creep no longer exists
+    for (var name in Memory.creeps) {
+        if (!Game.creeps[name]) {
+            delete Memory.creeps[name];
+            console.log('Clearing non-existing creep memory:', name);
+        }
+    }
 }
