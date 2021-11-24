@@ -55,8 +55,9 @@ let creepLogic = __require(1,0);
 let roomLogic = __require(2,0);
 let prototypes = __require(3,0);
 
-module.exports.loop = loop
-const loop = function() {
+__require(4,0)
+
+module.exports.loop = function() {
     Game.myRooms = _.filter(Game.rooms, r => r.controller && r.controller.level > 0 && r.controller.my);
     _.forEach(Game.myRooms, r => roomLogic.spawning(r));
     for (var name in Game.creeps) {
@@ -80,8 +81,8 @@ return module.exports;
 /********** Start module 1: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\index.js **********/
 __modules[1] = function(module, exports) {
 let creepLogic = {
-    harvester:     __require(4,1),
-    upgrader:      __require(5,1),
+    harvester:     __require(5,1),
+    upgrader:      __require(6,1),
 }
 
 module.exports = creepLogic;
@@ -91,7 +92,7 @@ return module.exports;
 /********** Start module 2: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\room\index.js **********/
 __modules[2] = function(module, exports) {
 let roomLogic = {
-    spawning:     __require(6,2),
+    spawning:     __require(7,2),
 }
 
 module.exports = roomLogic;
@@ -101,13 +102,23 @@ return module.exports;
 /********** Start module 3: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\prototypes\index.js **********/
 __modules[3] = function(module, exports) {
 let files = {
-    creep: __require(7,3)
+    creep: __require(8,3)
 }
 return module.exports;
 }
 /********** End of module 3: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\prototypes\index.js **********/
-/********** Start module 4: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\harvester.js **********/
+/********** Start module 4: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\globalFunctions.js **********/
 __modules[4] = function(module, exports) {
+global.sayHi = function() {
+
+    console.log('hi')
+    return 'hi'
+}
+return module.exports;
+}
+/********** End of module 4: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\globalFunctions.js **********/
+/********** Start module 5: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\harvester.js **********/
+__modules[5] = function(module, exports) {
 var harvester = {
 
     /** @param {Creep} creep **/
@@ -146,9 +157,9 @@ var harvester = {
 module.exports = harvester;
 return module.exports;
 }
-/********** End of module 4: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\harvester.js **********/
-/********** Start module 5: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\upgrader.js **********/
-__modules[5] = function(module, exports) {
+/********** End of module 5: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\harvester.js **********/
+/********** Start module 6: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\upgrader.js **********/
+__modules[6] = function(module, exports) {
 var roleUpgrader = {
 
     /** @param {Creep} creep **/
@@ -185,10 +196,10 @@ var roleUpgrader = {
 module.exports = roleUpgrader;
 return module.exports;
 }
-/********** End of module 5: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\upgrader.js **********/
-/********** Start module 6: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\room\spawning.js **********/
-__modules[6] = function(module, exports) {
-let creepLogic = __require(1,6);
+/********** End of module 6: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\creeps\upgrader.js **********/
+/********** Start module 7: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\room\spawning.js **********/
+__modules[7] = function(module, exports) {
+let creepLogic = __require(1,7);
 let creepTypes = _.keys(creepLogic);
 
 function spawnCreeps(room) {
@@ -210,15 +221,15 @@ function spawnCreeps(room) {
 module.exports = spawnCreeps;
 return module.exports;
 }
-/********** End of module 6: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\room\spawning.js **********/
-/********** Start module 7: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\prototypes\creep.js **********/
-__modules[7] = function(module, exports) {
+/********** End of module 7: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\room\spawning.js **********/
+/********** Start module 8: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\prototypes\creep.js **********/
+__modules[8] = function(module, exports) {
 Creep.prototype.sayHello = function sayHello() {
     this.say("Hello", true);
 }
 return module.exports;
 }
-/********** End of module 7: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\prototypes\creep.js **********/
+/********** End of module 8: C:\Users\carso\Documents\GitHub\The-Internationale-Screeps-Bot\src\prototypes\creep.js **********/
 /********** Footer **********/
 if(typeof module === "object")
 	module.exports = __require(0);

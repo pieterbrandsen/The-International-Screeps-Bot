@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             options: {
                 email: config.email,
                 password: config.password,
-                branch: 'default',
+                branch: 'main',
                 ptr: false,
             },
             dist: {
