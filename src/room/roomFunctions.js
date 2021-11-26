@@ -9,7 +9,20 @@ Room.prototype.get = function() {
 
 
         }
+        cache() {
+
+
+        }
+        getValue()
     }
 
+    function findIDsOfSources() {
 
+
+    }
+
+    function findHarvestPositions() {
+
+
+    }
 }

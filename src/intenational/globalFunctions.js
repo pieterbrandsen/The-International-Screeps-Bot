@@ -57,7 +57,7 @@ global.advancedRun = function(functionName) {
 
     // Stop if cpu logging is off
 
-    if (!cpuLogging) return
+    if (!Memory.cpuLogging) return
 
     // Create custom log for functions used cpu
 

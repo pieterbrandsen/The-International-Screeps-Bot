@@ -1,12 +1,17 @@
 const memHack = require('./other/memHack')
 
-require('./other/memHack')
+const internationalManager = require('./intenational/internationalManager')
 
-require('./intenational/internationalManager')
-
-require('./roomManager')
+const roomManager = require('./room/roomManager')
 
 module.exports.loop = function() {
 
+    console.log('hi')
+    console.log(function() { hi })
+
     memHack()
+
+    internationalManager()
+
+    roomManager()
 }
