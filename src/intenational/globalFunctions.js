@@ -1,11 +1,17 @@
+global.deleteAllOrders = function() {
+
+    // Find my orders
+
+    const orders = Game.market.orders
+
+    // Loop through my orders and delete them
+
+    for (const orderID in orders) Game.market.cancelOrder(orderID)
+}
+
 global.avgPrice = function() {
 
 
-}
-
-global.createClass = function(className) {
-
-    return class className {}
 }
 
 /**
