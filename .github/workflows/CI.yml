@@ -13,7 +13,8 @@ jobs:
                fail-fast: false
                matrix:
                     node: [10.x,12.x,14.x,16.x]
-          runs-on: self-hosted
+                    os: [macos-latest, ubuntu-latest, windows-latest]
+          runs-on: ${{ matrix.os }}
           steps:
                - uses: actions/checkout@v3
                - name: Use Node.js ${{ matrix.node }}
