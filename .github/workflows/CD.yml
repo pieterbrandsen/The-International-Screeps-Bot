@@ -12,13 +12,8 @@ jobs:
      testUsingServer:
           runs-on: self-hosted
           steps:
-               - uses: actions/checkout@v3
-               - name: Use Node.js 12.x
-                 uses: actions/setup-node@v3
-                 with:
-                      node-version: 12.x
-                      cache: 'npm'
                - run: npm -v
+               - run: node -v
                - run: npm i ncp@^2.0.0 q@^1.5.1  screeps@4.2.14 dotenv@^16.0.1 screeps-api@1.16.0 screepsmod-admin-utils@1.28.1 screepsmod-auth@2.6.2
                - run: npm ci
                - run: set BUILD_MINUTES=60
