@@ -52,6 +52,8 @@ let botsSpawned = false;
 
 class Tester {
   constructor(length) {
+    console.log(process.env)
+    console.log(process.argv)
     console.log(process.env.STEAM_API_KEY);
     console.log(process.env.STEAM_ID);
     this.roomsSeen = {};
