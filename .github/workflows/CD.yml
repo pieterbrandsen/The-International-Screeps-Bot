@@ -10,6 +10,7 @@ on:
 jobs:
      testUsingServer:
           runs-on: self-hosted
+          environment: Server
           steps:
                - name: 'Cleanup build folder'
                  run: |
@@ -34,6 +35,3 @@ jobs:
                - run: npm run build
                - name: Execute server
                  run: node server/index.js 600
-                 env:
-                   STEAM_API_KEY: ${{ secrets.API_KEY }}
-                   STEAM_ID: ${{ secrets.STEAM_ID }}
