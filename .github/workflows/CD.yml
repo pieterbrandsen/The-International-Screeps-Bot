@@ -25,5 +25,9 @@ jobs:
                     PYTHON_VERSION: 2.7
                - run: npm ci
                - run: npm i screeps@4.2.14 ncp@^2.0.0 q@^1.5.1 dotenv@^16.0.1 screeps-api@1.16.0 screepsmod-admin-utils@1.28.1 screepsmod-auth@2.6.2
-               - run: set BUILD_MINUTES=60
-               - run: npm run test-server
+               - run: npm run build
+               - name: Execute server
+                 run: node server/index.js 600
+                 env:
+                   STEAM_API_KEY: ${{ secrets.API_KEY }}
+                   STEAM_ID: ${{ secrets.STEAM_ID }}
