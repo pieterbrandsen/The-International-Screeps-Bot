@@ -9,7 +9,7 @@ on:
 
 jobs:
      PerformanceTest:
-          timeout-minutes: 1
+          timeout-minutes: 1440
           runs-on: self-hosted
           steps:
                - name: 'Cleanup build folder'
@@ -40,4 +40,4 @@ jobs:
                  env:
                     STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
                     STEAM_ID: ${{ secrets.STEAM_ID }}
-                 run: node server/index.js 300
+                 run: node server/index.js 720
