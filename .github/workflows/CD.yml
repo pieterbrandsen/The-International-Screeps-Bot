@@ -9,6 +9,7 @@ on:
 
 jobs:
      PerformanceTest:
+          timeout-minutes: 1
           runs-on: self-hosted
           steps:
                - name: 'Cleanup build folder'
