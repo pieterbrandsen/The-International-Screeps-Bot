@@ -15,6 +15,7 @@ jobs:
                  run: |
                     echo "Cleaning up previous run"
                     rm -rf "${{ github.workspace }}"
+                    mkdir -p "${github.workspace}"
                - uses: actions/checkout@v3
                - name: Use Node.js 12.x
                  uses: actions/setup-node@v3
