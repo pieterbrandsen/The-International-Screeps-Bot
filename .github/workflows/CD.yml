@@ -23,8 +23,8 @@ jobs:
                     STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
                     STEAM_ID: ${{ secrets.STEAM_ID }}
                  run: |
-                    echo ${#STEAM_API_KEY}
-                    echo ${#STEAM_ID}
+                    echo ${STEAM_API_KEY}
+                    echo ${STEAM_ID}
                - name: Use Node.js 12.x
                  uses: actions/setup-node@v3
                  with:
