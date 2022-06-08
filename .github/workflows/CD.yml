@@ -11,11 +11,12 @@ jobs:
      testUsingServer:
           runs-on: self-hosted
           steps:
-               - name: Runner workspace path
+               - name: 'Cleanup build folder'
                  run: |
-                    echo "Cleaning up previous run"
-                    rm -rf "${{ github.workspace }}"
-                    mkdir -p "${github.workspace}"
+                    ls -la ./
+                    rm -rf ./* || true
+                    rm -rf ./.??* || true
+                    ls -la ./
                - uses: actions/checkout@v3
                - name: Use Node.js 12.x
                  uses: actions/setup-node@v3
