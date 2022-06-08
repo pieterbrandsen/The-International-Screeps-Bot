@@ -8,7 +8,7 @@ on:
      pull_request:
 
 jobs:
-     testUsingServer:
+     PerformanceTest:
           runs-on: self-hosted
           steps:
                - name: 'Cleanup build folder'
@@ -29,9 +29,12 @@ jobs:
                     python-version: 2.7
                  env:
                     PYTHON_VERSION: 2.7
-               - run: npm ci
-               - run: npm i screeps@4.2.14 ncp@^2.0.0 q@^1.5.1 dotenv@^16.0.1 screeps-api@1.16.0 screepsmod-admin-utils@1.28.1 screepsmod-auth@2.6.2
-               - run: npm run build
+               - name: Install dependencies
+                 run: npm ci
+               - name: Install screeps dependencies
+                 run: npm i screeps@4.2.14 ncp@^2.0.0 q@^1.5.1 dotenv@^16.0.1 screeps-api@1.16.0 screepsmod-admin-utils@1.28.1 screepsmod-auth@2.6.2
+               - name: Run build
+                 run: npm run build
                - name: Execute server
                  env:
                     STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
