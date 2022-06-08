@@ -10,7 +10,6 @@ on:
 jobs:
      testUsingServer:
           runs-on: self-hosted
-          environment: Server
           steps:
                - name: 'Cleanup build folder'
                  run: |
