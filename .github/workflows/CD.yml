@@ -18,10 +18,13 @@ jobs:
                     rm -rf ./.??* || true
                     ls -la ./
                - uses: actions/checkout@v3
-               - name: Dump GitHub context
+               - name: Test
                  env:
-                    GITHUB_CONTEXT: ${{ toJson(github) }}
-                 run: echo "$GITHUB_CONTEXT"
+                    STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+                    STEAM_ID: ${{ secrets.STEAM_ID }}
+                 run: |
+                    echo ${#STEAM_API_KEY}
+                    echo ${#STEAM_ID}
                - name: Use Node.js 12.x
                  uses: actions/setup-node@v3
                  with:
@@ -37,4 +40,4 @@ jobs:
                - run: npm i screeps@4.2.14 ncp@^2.0.0 q@^1.5.1 dotenv@^16.0.1 screeps-api@1.16.0 screepsmod-admin-utils@1.28.1 screepsmod-auth@2.6.2
                - run: npm run build
                - name: Execute server
-                 run: node server/index.js 600
+                 run: node server/index.js 300
