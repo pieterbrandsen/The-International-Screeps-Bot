@@ -78,7 +78,7 @@ class Tester {
       console.log(`> Start the simulation${appendix}`);
       if (this.maxRuntime > 0) {
         // await sleep(this.maxRuntime);
-        while(lastTick === undefined || lastTick < 100) {
+        while(lastTick === undefined || lastTick < 1000) {
         await sleep(1000);
         console.log(lastTick)
         };
