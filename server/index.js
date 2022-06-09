@@ -79,7 +79,8 @@ class Tester {
       if (this.maxRuntime > 0) {
         // await sleep(this.maxRuntime);
         while(lastTick === undefined || lastTick < 100) {
-          console.log(lastTick)
+        await sleep(1000);
+        console.log(lastTick)
         };
         console.log(`${lastTick} End of simulation`);
         console.log("Status:");
